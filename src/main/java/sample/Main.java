@@ -24,7 +24,7 @@ public class Main extends Application {
         Parent root = loader.load();
 
         primaryStage.setTitle("ACDP Test Gui");
-        primaryStage.setScene(new Scene(root, 2000, 800));
+        primaryStage.setScene(new Scene(root, 1500, 800));
         primaryStage.show();
         Controller myController = loader.getController();
 

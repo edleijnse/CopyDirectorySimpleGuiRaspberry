@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="javafx-base-14-ea+8-linux">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/jar-download/javafx-base-14-ea+8-linux.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar-download/javafx-graphics-14-ea+8-linux.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar-download/javafx-swing-14-ea+8-linux.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
