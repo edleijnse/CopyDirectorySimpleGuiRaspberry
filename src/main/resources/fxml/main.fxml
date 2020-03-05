@@ -2,18 +2,30 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <AnchorPane prefHeight="800.0" prefWidth="1500.0">
          <children>
-            <TextField fx:id="txtSearchKeywords" layoutX="29.0" layoutY="104.0" />
-            <Label fx:id="lblSearchKeywords" layoutX="29.0" layoutY="82.0" text="search Keywords" />
-            <Button fx:id="cmdStart" layoutX="29.0" layoutY="54.0" onAction="#startSearch" text="start" />
-            <Button fx:id="cmdAcdpDirectory" layoutX="29.0" layoutY="17.0" onAction="#setAcdpDirectory" text="ACDP directory" />
-            <ListView fx:id="listItems" layoutX="29.0" layoutY="172.0" onMouseClicked="#listItemsClicked" prefHeight="300.0" prefWidth="1200.0" />
-            <Label fx:id="lblAcdpDirectory" layoutX="164.0" layoutY="22.0" text="EMPTY: Please choose ACDP directory" />
-            <Label fx:id="lblClickedImage" layoutX="36.0" layoutY="495.0" />
+            <TextField fx:id="txtSearchKeywords" layoutX="59.0" layoutY="304.0" />
+            <Label fx:id="lblSearchKeywords" layoutX="59.0" layoutY="282.0" text="search Keywords" />
+            <Button fx:id="cmdStart" layoutX="59.0" layoutY="354.0" onAction="#startSearch" prefHeight="27.0" prefWidth="94.0" text="search" />
+            <Button fx:id="cmdAcdpDirectory" layoutX="59.0" layoutY="61.0" onAction="#setAcdpDirectory" text="ACDP directory" />
+            <ListView fx:id="listItems" layoutX="59.0" layoutY="402.0" onMouseClicked="#listItemsClicked" prefHeight="300.0" prefWidth="1000.0" />
+            <Label fx:id="lblAcdpDirectory" layoutX="207.0" layoutY="66.0" text="EMPTY: Please choose ACDP directory" />
+            <Label fx:id="lblClickedImage" layoutX="1059.0" layoutY="402.0" prefHeight="17.0" prefWidth="28.0" />
+            <Button fx:id="cmdImageDirectory" layoutX="59.0" layoutY="22.0" mnemonicParsing="false" onAction="#setImageDirectory" text="Image directory" />
+            <Label fx:id="lblImageDirectory" layoutX="207.0" layoutY="27.0" text=" EMPTY: Please choose Images Directory" />
+            <Button fx:id="cmdDirectoryNames" layoutX="58.0" layoutY="146.0" mnemonicParsing="false" onAction="#cmdDirectoryNamesClicked" text="create keywords  from directorynames " />
+            <Button fx:id="cmdInitializeACDP" layoutX="59.0" layoutY="106.0" mnemonicParsing="false" onAction="#cmdInitializeACDPClicked" text="initialize ACDP directory - choose empty directory" />
+            <Button fx:id="cmdExifData" layoutX="57.0" layoutY="184.0" mnemonicParsing="false" onAction="#cmdExifDataClicked" text="create keywords from EXIF Data" />
+            <Button fx:id="cmdMicrosoftVision" layoutX="59.0" layoutY="225.0" mnemonicParsing="false" onAction="#createKeywordsFromMicrrosoftVision" text="create keywords from Microsoft Vision" />
+            <Label layoutX="60.0" layoutY="717.0" text="IMAGINE - helps to find your images again">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
    </children>
    <columnConstraints>
