@@ -105,8 +105,16 @@ public class Controller {
     @FXML
     public void createKeywordsFromMicrrosoftVision(Event e) throws IOException {
         System.out.println("Button createKeywordsFromMicrrosoftVision clicked");
-        String mySubscriptionKey = new String(Files.readAllBytes(Paths.get("/Users/edleijnse/OneDrive/Finanzen/Lizensen/Microsoft/keys/subscriptionKey1")));
-
+        String mySubscriptionKey = "";
+        try {
+            mySubscriptionKey = new String(Files.readAllBytes(Paths.get("/Users/edleijnse/OneDrive/Finanzen/Lizensen/Microsoft/keys/subscriptionKey1")));
+        } catch (Exception ex) {
+            try {
+                mySubscriptionKey = new String(Files.readAllBytes(Paths.get("C:\\Users\\edleijnse\\OneDrive\\Finanzen\\Lizensen\\Microsoft\\keys\\subscriptionKey1")));
+            } catch (Exception ex2) {
+                mySubscriptionKey = new String(Files.readAllBytes(Paths.get("C:\\Users\\edlei\\OneDrive\\Finanzen\\Lizensen\\Microsoft\\keys\\subscriptionKey1")));
+            }
+        }
         CopyDirectory copyDirectory = new CopyDirectory();
         copyDirectory.setSubscriptionKey(mySubscriptionKey);
         String myChoosenImageDirectory = choosedImageDirectory.toPath().toString();
