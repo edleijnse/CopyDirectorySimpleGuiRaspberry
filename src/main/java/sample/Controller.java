@@ -26,6 +26,8 @@ public class Controller {
 
     @FXML
     private ListView listItems = new ListView();
+
+    private ListView listImages = new ListView();
     DirectoryChooser directoryChooser = new DirectoryChooser();
     File choosedAcdpDirectory =new File("dummy");
     File choosedImageDirectory =new File("dummy");
@@ -162,11 +164,14 @@ public class Controller {
         AcdpAccessor acdpAccessor = new AcdpAccessor();
         listItems.getItems().clear();
         listItems.refresh();
+        listImages.getItems().clear();
+        listImages.refresh();
 
         List<ImageRow> imageWithSomeKeywords = acdpAccessor.selectFromImageTable(true,lblAcdpDirectory.getText() + "/layout", "-","-", txtSearchKeywords.getText());
         imageWithSomeKeywords.forEach(imageRow -> {
             String allKeywords = putKeyWordsInString(imageRow.getIptcKeywords());
             listItems.getItems().add(imageRow.getDirectory()+"/"+imageRow.getFile()+", keywords: " + allKeywords);
+            listImages.getItems().add(imageRow.getImage());
         });
 
         listItems.refresh();
@@ -211,6 +216,20 @@ public class Controller {
         Image image = new Image(bis);
         return image;
     }
+    public Image getImageFromByteArray(byte[] iImageByteArray) throws IOException {
+
+        final byte[][] myImage = {null};
+
+        if (iImageByteArray != null){
+            myImage[0] = iImageByteArray;
+            ByteArrayInputStream bis = new ByteArrayInputStream((myImage[0]));
+            Image image = new Image(bis);
+            return image;
+        }
+
+      return null;
+    }
+
 
     @FXML
     public void listItemsClicked(Event e) throws IOException {
@@ -223,6 +242,7 @@ public class Controller {
             System.out.println("o = " + o + " (" + o.getClass() + ")");
             myIndex = (int)o;
             String myItemText = (String)listItems.getItems().get(myIndex);
+
             System.out.println(myItemText);
             int endItemText = myItemText.indexOf(", keywords");
             if (endItemText>0){
@@ -230,7 +250,7 @@ public class Controller {
                 System.out.println(myImage);
                 // lblClickedImage.setText(myItemText);
                 lblClickedImage.setText("");
-                Image image1 = getImage(myImage);
+                Image image1 = getImageFromByteArray((byte[])listImages.getItems().get(myIndex));
                 ImageView imageView = new ImageView(image1);
 
                 System.out.println("pictureMetaData Image Height: " + image1.getHeight());
